@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "../pkg/grpc/generate";
+
+service UserService {
+  rpc CheckToken(TokenRequest) returns (UserResponse);
+  rpc GetUserByID(IDRequest) returns (UserResponse);
+}
+
+message TokenRequest {
+  string access = 1;
+}
+
+message IDRequest {
+  int64 id = 1;
+}
+
+message UserResponse {
+  string id = 1;
+  string role = 2;
+  string email = 3;
+  string name = 4;
+}

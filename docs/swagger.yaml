@@ -1,0 +1,176 @@
+basePath: /v1
+definitions:
+  auth_internal_entity.User:
+    properties:
+      createAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  title: Auth SQLite
+  version: "69"
+paths:
+  /login:
+    get:
+      consumes:
+      - application/json
+      description: Вход email + пароль
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth_internal_entity.User'
+        "400":
+          description: Неправильные данные
+          schema:
+            type: string
+        "401":
+          description: Ошибка аутентификации, неверный email или пароль
+          schema:
+            type: string
+        "500":
+          description: Ошибка создания токенов
+          schema:
+            type: string
+      summary: Вход
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Введите новый пароль
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth_internal_entity.User'
+        "400":
+          description: Некоректные данные
+          schema:
+            type: string
+        "404":
+          description: Пользователь не найден
+          schema:
+            type: string
+        "500":
+          description: Пользователь уже создан или ошибка сервера
+          schema:
+            type: string
+      summary: Обновление пароля
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Получение всех пользователей (Без паролей)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth_internal_entity.User'
+        "404":
+          description: Пустая база данных
+          schema:
+            type: string
+      summary: Получить всех пользователей
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Удаление пользователя по его ID
+      parameters:
+      - description: ID пользователя
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Пользователь удален
+          schema:
+            type: string
+        "400":
+          description: Неправильные параметры
+          schema:
+            type: string
+        "500":
+          description: Ошибка сервера
+          schema:
+            type: string
+      summary: Удалить пользователя по ID
+    get:
+      consumes:
+      - application/json
+      description: Получишь пользователя по ID
+      parameters:
+      - description: ID пользователя
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Неправильный параметр
+          schema:
+            type: string
+        "404":
+          description: Пользователя нет
+          schema:
+            type: string
+      summary: Получить пользователя по ID
+      tags:
+      - users
+  /users/email/{email}:
+    get:
+      consumes:
+      - application/json
+      description: Получить пользователя по его Email
+      parameters:
+      - description: Email пользователя
+        in: path
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth_internal_entity.User'
+        "404":
+          description: Пользователь не найден
+          schema:
+            type: sting
+      summary: Получить пользователя по Email
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
