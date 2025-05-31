@@ -12,10 +12,10 @@ import (
 )
 
 type Client struct {
-	client pd.UserServiceClient
+	Conn pd.UserServiceClient
 }
 
-func NewClient() (*Client, error) {
+func NewClient() (Client, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
@@ -28,10 +28,10 @@ func NewClient() (*Client, error) {
 	if err != nil {
 		logger.Logger.Error("Ошибка подключения клиента к gRPC серверу",
 			zap.Error(err))
-		return nil, fmt.Errorf("ошибка подключения к gRPC серверу: %v", err)
+		return Client{}, fmt.Errorf("ошибка подключения к gRPC серверу: %v", err)
 	}
 
-	return &Client{
-		client: pd.NewUserServiceClient(conn),
+	return Client{
+		Conn: pd.NewUserServiceClient(conn),
 	}, nil
 }
