@@ -9,6 +9,6 @@ import (
 func main() {
 	logger.LoggerRun()
 	go app.Run()
-	go server.Run()
+	go server.Run(app.GlobalUseCase)
 	select {}
 }

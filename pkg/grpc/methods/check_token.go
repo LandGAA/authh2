@@ -11,7 +11,7 @@ import (
 
 type UserServiceServer struct {
 	pd.UnimplementedUserServiceServer
-	uu usecase.UseCase
+	UU usecase.UseCase
 }
 
 func (s *UserServiceServer) CheckToken(ctx context.Context, req *pd.TokenRequest) (*pd.UserResponse, error) {
@@ -30,7 +30,7 @@ func (s *UserServiceServer) CheckToken(ctx context.Context, req *pd.TokenRequest
 }
 
 func (s *UserServiceServer) GetUserByID(ctx context.Context, req *pd.IDRequest) (*pd.UserResponse, error) {
-	user, err := s.uu.GetUserByID(int(req.Id))
+	user, err := s.UU.GetUserByID(int(req.Id))
 	if err != nil {
 		return nil, err
 	}
