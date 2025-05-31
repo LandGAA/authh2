@@ -1672,3 +1672,12 @@
 {"level":"info","ts":"2025-05-31T16:30:25.595+0300","caller":"logger/logger-runner.go:12","msg":"Логгер запущен","date":"2025-05-31 16:30:25.5617356 +0300 MSK m=+0.024494501"}
 {"level":"info","ts":"2025-05-31T16:30:25.598+0300","caller":"server/grpc_server.go:25","msg":"gRPC сервер запущен!"}
 {"level":"info","ts":"2025-05-31T16:30:25.599+0300","caller":"database/sqlite.go:34","msg":"Успешное подключение к SQLite!"}
+{"level":"info","ts":"2025-05-31T16:40:00.473+0300","caller":"logger/logger-runner.go:12","msg":"Логгер запущен","date":"2025-05-31 16:40:00.4373253 +0300 MSK m=+0.024768201"}
+{"level":"info","ts":"2025-05-31T16:40:00.476+0300","caller":"server/grpc_server.go:25","msg":"gRPC сервер запущен!"}
+{"level":"info","ts":"2025-05-31T16:40:00.477+0300","caller":"database/sqlite.go:34","msg":"Успешное подключение к SQLite!"}
+{"level":"info","ts":"2025-05-31T16:40:13.113+0300","caller":"methods/check_token.go:18","msg":"Получен запрос на обновление токена от Forum"}
+{"level":"info","ts":"2025-05-31T16:41:42.785+0300","caller":"methods/check_token.go:18","msg":"Получен запрос на обновление токена от Forum"}
+{"level":"info","ts":"2025-05-31T16:43:30.643+0300","caller":"logger/logger-runner.go:12","msg":"Логгер запущен","date":"2025-05-31 16:43:30.6087127 +0300 MSK m=+0.025291901"}
+{"level":"info","ts":"2025-05-31T16:43:30.645+0300","caller":"server/grpc_server.go:25","msg":"gRPC сервер запущен!"}
+{"level":"info","ts":"2025-05-31T16:43:30.645+0300","caller":"database/sqlite.go:34","msg":"Успешное подключение к SQLite!"}
+{"level":"info","ts":"2025-06-01T00:05:30.591+0300","caller":"logger/logger-runner.go:12","msg":"Логгер запущен","date":"2025-06-01 00:05:30.5559334 +0300 MSK m=+0.018412701"}
